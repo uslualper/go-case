@@ -1,8 +1,10 @@
 # Go Start
 
-1. make docker-build
-2. make docker-up
-3. You are ready!
+
+1. create .env from .env.dist
+2. make docker-build
+3. make docker-up
+4. You are ready!
 
 Make sure that the ports in the .env are not being used. Otherwise, docker will throw an error.
 
