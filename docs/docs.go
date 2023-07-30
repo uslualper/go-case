@@ -234,9 +234,6 @@ const docTemplate = `{
         "yuka-case_pkg_schema_response_v1.Test": {
             "type": "object",
             "properties": {
-                "cache": {
-                    "type": "string"
-                },
                 "message": {
                     "type": "string"
                 }

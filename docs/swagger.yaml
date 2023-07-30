@@ -24,8 +24,6 @@ definitions:
     type: object
   yuka-case_pkg_schema_response_v1.Test:
     properties:
-      cache:
-        type: string
       message:
         type: string
     type: object
