@@ -1,5 +1,14 @@
 # Go Start
 
+1. make docker-build
+2. make docker-up
+3. You are ready!
+
+Make sure that the ports in the .env are not being used. Otherwise, docker will throw an error.
+
+## Github Actions
+Fork this project and add a self runner to the server. Deploy ready
+
 ## Makefile
 
 make {command}
