@@ -9,6 +9,7 @@ import (
 	"gorm.io/gorm"
 
 	"yuka-case/pkg/config"
+	"yuka-case/pkg/entity"
 )
 
 var Mysql *gorm.DB
@@ -29,6 +30,8 @@ func ConnectMysql() {
 	if err != nil {
 		panic(err)
 	}
+
+	Mysql.AutoMigrate(&entity.Location{})
 
 	fmt.Println("Connection Opened to Database")
 }

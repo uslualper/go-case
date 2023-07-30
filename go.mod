@@ -11,7 +11,6 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/nicksnyder/go-i18n/v2 v2.2.1
 	github.com/swaggo/swag v1.8.10
-	github.com/urfave/cli v1.22.11
 	github.com/valyala/fasthttp v1.44.0
 	golang.org/x/text v0.7.0
 	gorm.io/driver/mysql v1.3.6
@@ -19,10 +18,13 @@ require (
 )
 
 require (
+	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
+)
+
+require (
 	github.com/KyleBanks/depth v1.2.1 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
-	github.com/bradfitz/gomemcache v0.0.0-20230124162541-5f7a7d875746 // indirect
-	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/go-openapi/jsonpointer v0.19.6 // indirect
 	github.com/go-openapi/jsonreference v0.20.2 // indirect
 	github.com/go-openapi/spec v0.20.8 // indirect
@@ -42,9 +44,9 @@ require (
 	github.com/mattn/go-runewidth v0.0.14 // indirect
 	github.com/philhofer/fwd v1.1.1 // indirect
 	github.com/rivo/uniseg v0.4.3 // indirect
-	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/savsgio/dictpool v0.0.0-20221023140959-7bf2e61cea94 // indirect
 	github.com/savsgio/gotils v0.0.0-20220530130905-52f3993e8d6d // indirect
+	github.com/stretchr/testify v1.8.4
 	github.com/swaggo/files v0.0.0-20220728132757-551d4a08d97a // indirect
 	github.com/tinylib/msgp v1.1.6 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect

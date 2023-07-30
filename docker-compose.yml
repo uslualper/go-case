@@ -10,5 +10,27 @@ services:
     volumes:
       - .:/app
     env_file: .env
+    depends_on:
+      - db
     ports:
       - 3000:3000
+    networks:
+      - backend
+  db:
+    container_name: yuka-db
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: yuka-db
+      MYSQL_USER: yuka
+      MYSQL_PASSWORD: 1234
+    ports:
+      - 3306:3306
+    networks:
+      - backend
+
+networks:
+  backend:   

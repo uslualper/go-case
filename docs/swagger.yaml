@@ -1,26 +1,160 @@
 basePath: /api
+definitions:
+  v1.Location:
+    properties:
+      latitude:
+        type: number
+      longitude:
+        type: number
+      marker:
+        type: string
+      name:
+        type: string
+    required:
+    - latitude
+    - longitude
+    - name
+    type: object
+  yuka-case_pkg_schema_payload_v1.Test:
+    properties:
+      message:
+        type: string
+    required:
+    - message
+    type: object
+  yuka-case_pkg_schema_response_v1.Test:
+    properties:
+      cache:
+        type: string
+      message:
+        type: string
+    type: object
 info:
   contact:
-    email: alper.uslu@enuygun.com
-    name: API Support
+    email: uslualper@outlook.com
+    name: Alper Uslu
   termsOfService: http://swagger.io/terms/
   title: API
   version: "1.0"
 paths:
+  /v1/location:
+    get:
+      description: Get locations
+      parameters:
+      - default: 1
+        description: page
+        in: query
+        name: page
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Locations
+      tags:
+      - Location
+    post:
+      consumes:
+      - application/json
+      description: Create Location
+      parameters:
+      - description: Location Payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/v1.Location'
+      produces:
+      - application/json
+      responses: {}
+      summary: Crate Location
+      tags:
+      - Location
+  /v1/location/{id}:
+    delete:
+      description: Delete Location
+      parameters:
+      - description: Location ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete Location
+      tags:
+      - Location
+    get:
+      description: Get Location
+      parameters:
+      - description: Location ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Location
+      tags:
+      - Location
+    put:
+      consumes:
+      - application/json
+      description: Update Location
+      parameters:
+      - description: Location ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Location Payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/v1.Location'
+      produces:
+      - application/json
+      responses: {}
+      summary: Update Location
+      tags:
+      - Location
+  /v1/routing/{id}:
+    get:
+      description: Get Routing
+      parameters:
+      - description: Location ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Routing
+      tags:
+      - Routing
   /v1/test:
     post:
       consumes:
       - application/json
       description: get test data
+      parameters:
+      - description: Test Payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/yuka-case_pkg_schema_payload_v1.Test'
       produces:
       - application/json
-      responses: {}
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/yuka-case_pkg_schema_response_v1.Test'
       summary: Test
       tags:
       - Test
-securityDefinitions:
-  Bearer:
-    in: header
-    name: Authorization
-    type: apiKey
 swagger: "2.0"

@@ -13,4 +13,4 @@ RUN go install github.com/mitranim/gow@latest
 
 EXPOSE 3000
 
-CMD gow run cmd/main/main.go
+CMD gow run main.go

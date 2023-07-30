@@ -4,13 +4,156 @@
         "title": "API",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
-            "name": "API Support",
-            "email": "alper.uslu@enuygun.com"
+            "name": "Alper Uslu",
+            "email": "uslualper@outlook.com"
         },
         "version": "1.0"
     },
     "basePath": "/api",
     "paths": {
+        "/v1/location": {
+            "get": {
+                "description": "Get locations",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Location"
+                ],
+                "summary": "Get Locations",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "page",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {}
+            },
+            "post": {
+                "description": "Create Location",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Location"
+                ],
+                "summary": "Crate Location",
+                "parameters": [
+                    {
+                        "description": "Location Payload",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.Location"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/v1/location/{id}": {
+            "get": {
+                "description": "Get Location",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Location"
+                ],
+                "summary": "Get Location",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Location ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            },
+            "put": {
+                "description": "Update Location",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Location"
+                ],
+                "summary": "Update Location",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Location ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Location Payload",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.Location"
+                        }
+                    }
+                ],
+                "responses": {}
+            },
+            "delete": {
+                "description": "Delete Location",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Location"
+                ],
+                "summary": "Delete Location",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Location ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/v1/routing/{id}": {
+            "get": {
+                "description": "Get Routing",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Routing"
+                ],
+                "summary": "Get Routing",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Location ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
         "/v1/test": {
             "post": {
                 "description": "get test data",
@@ -24,15 +167,72 @@
                     "Test"
                 ],
                 "summary": "Test",
-                "responses": {}
+                "parameters": [
+                    {
+                        "description": "Test Payload",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/yuka-case_pkg_schema_payload_v1.Test"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/yuka-case_pkg_schema_response_v1.Test"
+                        }
+                    }
+                }
             }
         }
     },
-    "securityDefinitions": {
-        "Bearer": {
-            "type": "apiKey",
-            "name": "Authorization",
-            "in": "header"
+    "definitions": {
+        "v1.Location": {
+            "type": "object",
+            "required": [
+                "latitude",
+                "longitude",
+                "name"
+            ],
+            "properties": {
+                "latitude": {
+                    "type": "number"
+                },
+                "longitude": {
+                    "type": "number"
+                },
+                "marker": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "yuka-case_pkg_schema_payload_v1.Test": {
+            "type": "object",
+            "required": [
+                "message"
+            ],
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "yuka-case_pkg_schema_response_v1.Test": {
+            "type": "object",
+            "properties": {
+                "cache": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
         }
     }
 }

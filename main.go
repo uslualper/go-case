@@ -2,13 +2,14 @@ package main
 
 import (
 	"strings"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/gofiber/fiber/v2/middleware/limiter"
 	"github.com/gofiber/template/html"
 
-	"yuka-case/pkg/cache"
 	"yuka-case/pkg/config"
 	"yuka-case/pkg/db"
 	"yuka-case/pkg/i18n"
@@ -32,6 +33,11 @@ func main() {
 		Views:     html.New("./views", ".html"),
 	})
 
+	app.Use(limiter.New(limiter.Config{
+		Max:        20,
+		Expiration: 30 * time.Second,
+	}))
+
 	allowOrigins := []string{}
 
 	if config.Config("APP_DEBUG") == "true" {
@@ -49,8 +55,6 @@ func main() {
 	}))
 
 	db.SetupDB()
-
-	cache.SetupCache()
 
 	router.SetupRoutes(app)
 

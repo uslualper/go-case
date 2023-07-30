@@ -18,6 +18,8 @@ func SetupRoutes(a *fiber.App) {
 		&System{},
 		&Test{},
 		&Swagger{},
+		&Location{},
+		&Routing{},
 	}
 
 	for _, route := range routes {
